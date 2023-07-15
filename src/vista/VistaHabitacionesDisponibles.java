@@ -20,7 +20,7 @@ public class VistaHabitacionesDisponibles extends JFrame{
 	
 	public VistaHabitacionesDisponibles() {
 		super("Habitaciones Disponibles");
-		setSize(300, 200);
+		setSize(300, 180);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
 		

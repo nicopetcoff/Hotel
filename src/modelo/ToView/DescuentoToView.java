@@ -10,6 +10,9 @@ public class DescuentoToView {
 		this.descuento = descuento;
 	}
 
+	public DescuentoToView() {
+	}
+
 	@Override
 	public String toString() {
 		return "DescuentoToView [nombreDescuento=" + nombreDescuento + ", descuento=" + descuento + "]";

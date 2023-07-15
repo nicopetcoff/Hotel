@@ -1,4 +1,4 @@
-package vista;
+	package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -46,6 +46,33 @@ public class vistaMenu extends JFrame{
 		
 		JButton verOfertasDisponibles = new JButton("Ver Ofertas Disponibles");
 		cont.add(verOfertasDisponibles);
+		
+		verOfertasDisponibles.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				VistaOfertasDisponibles vistaOfertas = new VistaOfertasDisponibles();
+				vistaOfertas.setVisible(true);
+				
+			}
+		});	
+		
+		JButton agendarEsporadico = new JButton("Reserva Cliente Esporadico");
+		cont.add(agendarEsporadico);
+		
+		agendarEsporadico.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				VistaReservaClienteEsporadico vista = new VistaReservaClienteEsporadico();
+				vista.setVisible(true);
+				
+			}
+		});
 		
 		panel.add(cont, BorderLayout.CENTER);
 		
