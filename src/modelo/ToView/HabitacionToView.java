@@ -18,6 +18,12 @@ public class HabitacionToView {
 		this.esAlquilado = esAlquilado;
 		
 	}
+	
+	
+
+	public HabitacionToView() {
+		
+	}
 
 	@Override
 	public String toString() {

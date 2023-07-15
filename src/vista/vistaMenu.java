@@ -1,43 +1,55 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class vistaMenu extends JFrame{
 
-	public vistaMenu() {
-		super("Vista Hotel");
-		setSize(500, 300);
+	public vistaMenu(){
+		setTitle("Hotel");
+		setSize(400, 300);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		this.setLayout(new BorderLayout());
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
-		JPanel panel1=new JPanel();
-		panel1.setLayout(new GridLayout(1,1,2,2));
-		this.add(panel1, BorderLayout.CENTER);
+		JPanel panel = new JPanel();
+		add(panel);
 		
+		panel.setLayout(new BorderLayout());
 		
-		JPanel panel2 = new JPanel();
-		panel2.setLayout(new FlowLayout());
+		JLabel titulo = new JLabel("Bievenido al Hotel", SwingConstants.CENTER);
+		panel.add(titulo, BorderLayout.NORTH);
 		
+		Container cont = new Container();
+		cont.setLayout(new FlowLayout());
 		
-		panel1.add(new JLabel("Hotel"));
-		panel1.add(panel2);
+		JButton verHabitacionesDisponibles = new JButton("Ver Habitaciones Disponibles");
+		cont.add(verHabitacionesDisponibles);
+		verHabitacionesDisponibles.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VistaHabitacionesDisponibles vista = new VistaHabitacionesDisponibles();
+				vista.setVisible(true);
+				
+			}
+		});
 		
-		JButton verHabitacionesDisponibles = new JButton("Ver habitaciones ");
+		JButton verOfertasDisponibles = new JButton("Ver Ofertas Disponibles");
+		cont.add(verOfertasDisponibles);
 		
-		panel2.add(new JButton("Random"));
-		panel2.add(new JButton("Random"));
-		panel2.add(new JButton("Random"));
-		panel2.add(new JButton("Random"));
-		panel2.add(new JButton("Random"));
-		panel2.add(new JButton("Random"));
+		panel.add(cont, BorderLayout.CENTER);
+		
+
 		
 		
 		
