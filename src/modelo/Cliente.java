@@ -21,7 +21,7 @@ public class Cliente {
 	
 	public Cliente(String nombre, String apellido, String dni) {
 		
-		this.tipoCliente = TipoCliente.HABITUAL;
+		this.tipoCliente = TipoCliente.ESPORADICO;
 		this.id = idSiguiente;
 		idSiguiente++;
 		this.nombre = nombre;
@@ -109,28 +109,50 @@ public class Cliente {
 		return res.getNroReserva();
 	}
 	
-	public float getRestanteReserva(int nroReserva) {
+	public float getRestanteReserva(int nroReserva) throws NoExisteReservaException {
 		for(Reserva res: reservas) {
 			if (res.getEstadoReserva().equals(EstadoReserva.ACTIVA) && res.getNroReserva() == nroReserva) {
 				return (float) (res.getValorReserva() - res.getSenia());
 			}
 		}
-		return 0;
+		throw new NoExisteReservaException("No existe la reserva");
 	}
 
-	public void cambiarATomada(int nroReserva1) throws NoExisteReservaException {
+	public void cambiarATomada(int nroReserva1, float montoAbona) throws NoExisteReservaException {
 		
 		int cont = 0;
 		
 		for(Reserva reser : reservas) {
-			if (reser.getNroReserva() == nroReserva1) {
+			if (reser.getNroReserva() == nroReserva1 ) {
 				reser.setEstadoReserva(EstadoReserva.TOMADA);
+				reser.setTotalPagado(reser.getTotalPagado()+montoAbona); 
 				cont++;
 			}
 		}
 		if (cont == 0) {
 			throw new NoExisteReservaException("No existe la reserva");
 		}
+	}
+
+	public void liberarReserva(int nroReserva1) throws NoExisteReservaException, ReservaImpagaException {
+		
+		int cont = 0;
+		
+		for(Reserva reser : reservas) {
+			if (reser.getNroReserva() == nroReserva1) {
+				if ((reser.getValorReserva() - reser.getTotalPagado() !=0)) {
+					throw new ReservaImpagaException("Adeuda monto reserva");
+				}else {
+					reser.setEstadoReserva(EstadoReserva.CUMPLIDA);
+					cont++;
+				}
+				
+			}
+		}
+		if (cont == 0) {
+			throw new NoExisteReservaException("No existe la reserva");
+		}
+		
 	}
 	
 	

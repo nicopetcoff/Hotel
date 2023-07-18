@@ -163,7 +163,7 @@ public class Hotel {
 		return null;
 	}
 
-	public double verRestanteAAPagar(String dniCliente, int nroReserva) throws NoExisteClienteException {
+	public double verRestanteAAPagar(String dniCliente, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
 		
 		Cliente c = tengoEseCliente(dniCliente);
 		if (c!=null) {
@@ -187,12 +187,23 @@ public class Hotel {
 		return habitacionesDisponibles;
 	}
 
-	public void cambiarEstadoATomada(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
+	public void cambiarEstadoATomada(String dni, int nroReserva, float montoAbona) throws NoExisteClienteException, NoExisteReservaException {
 		
 		Cliente clie = tengoEseCliente (dni);
 		
 		if (clie!=null) {
-			clie.cambiarATomada(nroReserva);
+			clie.cambiarATomada(nroReserva, montoAbona);
+		}else {
+			throw new NoExisteClienteException("No existe el cliente");
+		}
+	}
+
+	public void liberarReserva(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException, ReservaImpagaException {
+		
+		Cliente clie = tengoEseCliente (dni);
+		
+		if (clie!=null) {
+			clie.liberarReserva(nroReserva);
 		}else {
 			throw new NoExisteClienteException("No existe el cliente");
 		}

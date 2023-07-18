@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.Hotel;
+import modelo.ReservaImpagaException;
 import modelo.Enum.TipoHabitacion;
 import modelo.Exception.NoEsHabitualException;
 import modelo.Exception.NoExisteClienteException;
@@ -67,14 +68,19 @@ public class HotelController {
 		return nroReserva;
 	}
 	
-	public double verRestentaReserva(String dniCliente, int nroReserva) throws NoExisteClienteException {
+	public double verRestentaReserva(String dniCliente, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
 		double restante = hotel.verRestanteAAPagar(dniCliente, nroReserva);
 		return restante;
 	}
 
-	public void cambiarEstadoTomada(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
+	public void cambiarEstadoTomada(String dni, int nroReserva, float montoAbona) throws NoExisteClienteException, NoExisteReservaException {
 		
-		hotel.cambiarEstadoATomada(dni, nroReserva);
+		hotel.cambiarEstadoATomada(dni, nroReserva, montoAbona);
+	}
+
+	public void LiberarHabitacion(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException, ReservaImpagaException {
+		
+		hotel.liberarReserva(dni, nroReserva);
 	}
 	
 	

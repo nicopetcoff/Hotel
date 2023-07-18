@@ -118,6 +118,20 @@ public class vistaMenu extends JFrame{
 		
 		panel.add(cont, BorderLayout.CENTER);
 		
+		JButton dejarHabitacion = new JButton("Retirar Huesped de Habitación");		
+		cont.add(dejarHabitacion);
+		
+		dejarHabitacion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VistaDejarHabitacion vista = new VistaDejarHabitacion();
+				
+				vista.setVisible (true);
+			}
+		});
+		
 
 		
 		

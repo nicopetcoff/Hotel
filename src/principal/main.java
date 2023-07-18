@@ -16,6 +16,7 @@ import modelo.Exception.NoEsHabitualException;
 import modelo.Exception.NoExisteClienteException;
 import modelo.Exception.NoExisteDescuentoException;
 import modelo.Exception.NoExisteHabitacionException;
+import modelo.Exception.NoExisteReservaException;
 
 public class main {
 	
@@ -84,7 +85,7 @@ public class main {
 		
 		try {
 			System.out.println(h.verRestentaReserva(dniCliente, nroReserva));
-		} catch (NoExisteClienteException e) {
+		} catch (NoExisteClienteException | NoExisteReservaException e) {
 			e.printStackTrace();
 		}
 		

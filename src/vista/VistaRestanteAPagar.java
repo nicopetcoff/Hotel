@@ -9,6 +9,7 @@ import javax.swing.*;
 
 import controlador.HotelController;
 import modelo.Exception.NoExisteClienteException;
+import modelo.Exception.NoExisteReservaException;
 
 public class VistaRestanteAPagar extends JFrame{
 	
@@ -41,7 +42,7 @@ public class VistaRestanteAPagar extends JFrame{
 					double restanteAPagar = controlador.verRestentaReserva(dni, nroReserva);
 					
 					JOptionPane.showMessageDialog(null, "El restante a pagar es: " +restanteAPagar, "Exito", JOptionPane.INFORMATION_MESSAGE);
-				} catch (NoExisteClienteException e1) {
+				} catch (NoExisteClienteException | NoExisteReservaException e1) {
 					
 					JOptionPane.showMessageDialog(null, "El Operacion no valida", "Error", JOptionPane.ERROR_MESSAGE);
 					e1.printStackTrace();

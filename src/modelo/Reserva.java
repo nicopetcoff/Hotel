@@ -9,6 +9,7 @@ public class Reserva {
 	private LocalDate fechaComienzo;
 	private int numeroDias;
 	private double valorReserva;
+	private double totalPagado;
 	private double senia;
 	private EstadoReserva estadoReserva;
 	private static int nroReservaSig = 1;
@@ -22,6 +23,7 @@ public class Reserva {
 		this.numeroDias = numeroDias;
 		this.valorReserva = valorReserva;
 		this.senia = senia;
+		this.totalPagado = senia;
 		this.estadoReserva = EstadoReserva.ACTIVA;
 		this.nroReserva = nroReservaSig;
 		nroReservaSig++;
@@ -66,6 +68,14 @@ public class Reserva {
 
 	public int getNroReserva() {
 		return nroReserva;
+	}
+	
+	public double getTotalPagado() {
+		return this.totalPagado;
+	}
+	
+	public void setTotalPagado(double totalPagado) {
+		this.totalPagado = totalPagado;
 	}
 
 	public void setEstadoReserva(EstadoReserva estado) {
