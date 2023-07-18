@@ -68,6 +68,11 @@ public class Reserva {
 		return nroReserva;
 	}
 
+	public void setEstadoReserva(EstadoReserva estado) {
+		
+		this.estadoReserva = estado;
+	}
+
 	
 	
 	

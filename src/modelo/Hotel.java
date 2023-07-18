@@ -8,6 +8,7 @@ import modelo.Exception.NoEsHabitualException;
 import modelo.Exception.NoExisteClienteException;
 import modelo.Exception.NoExisteDescuentoException;
 import modelo.Exception.NoExisteHabitacionException;
+import modelo.Exception.NoExisteReservaException;
 import modelo.ToView.ClienteToView;
 import modelo.ToView.DescuentoToView;
 import modelo.ToView.HabitacionToView;
@@ -168,10 +169,34 @@ public class Hotel {
 		if (c!=null) {
 			return c.getRestanteReserva(nroReserva);
 		}else {
-			throw new NoExisteClienteException("No existe el clienet");
+			throw new NoExisteClienteException("No existe el cliente");
 		}
 	}
-	
+
+	public ArrayList<HabitacionToView> verHabitacionesDisponiblesPorTipo(TipoHabitacion tipo) {
+		
+		ArrayList<HabitacionToView> habitacionesDisponibles = new ArrayList<>();
+		
+		for(Habitacion hab: habitaciones) {
+			if (hab.getTipoHabitacion().equals(tipo)) {
+				
+				habitacionesDisponibles.add(hab.toView());
+			}
+		}
+		
+		return habitacionesDisponibles;
+	}
+
+	public void cambiarEstadoATomada(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
+		
+		Cliente clie = tengoEseCliente (dni);
+		
+		if (clie!=null) {
+			clie.cambiarATomada(nroReserva);
+		}else {
+			throw new NoExisteClienteException("No existe el cliente");
+		}
+	}
 	
 
 }

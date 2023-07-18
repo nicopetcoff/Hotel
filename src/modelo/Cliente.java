@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import modelo.Enum.TipoCliente;
 import modelo.Exception.NoEsHabitualException;
+import modelo.Exception.NoExisteReservaException;
 import modelo.ToView.ClienteToView;
 
 public class Cliente {
@@ -115,6 +116,21 @@ public class Cliente {
 			}
 		}
 		return 0;
+	}
+
+	public void cambiarATomada(int nroReserva1) throws NoExisteReservaException {
+		
+		int cont = 0;
+		
+		for(Reserva reser : reservas) {
+			if (reser.getNroReserva() == nroReserva1) {
+				reser.setEstadoReserva(EstadoReserva.TOMADA);
+				cont++;
+			}
+		}
+		if (cont == 0) {
+			throw new NoExisteReservaException("No existe la reserva");
+		}
 	}
 	
 	

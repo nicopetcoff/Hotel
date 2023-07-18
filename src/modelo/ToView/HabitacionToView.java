@@ -10,7 +10,7 @@ public class HabitacionToView {
 	private double precio;
 	private boolean esAlquilado;
 
-	public HabitacionToView(TipoHabitacion tipoHabitacion, int piso, double precio, boolean esAlquilado) {
+	public HabitacionToView(TipoHabitacion tipoHabitacion, int nroHabitacion, int piso, double precio, boolean esAlquilado) {
 		this.tipoHabitacion = tipoHabitacion;
 		this.nroHabitacion = nroHabitacion;
 		this.piso = piso;

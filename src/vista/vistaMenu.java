@@ -44,6 +44,20 @@ public class vistaMenu extends JFrame{
 			}
 		});
 		
+		JButton verHabitacionesDiposniblesPorTipo = new JButton("Ver Habitaciones Disponibles por Tipo");
+		cont.add(verHabitacionesDiposniblesPorTipo);
+		
+		verHabitacionesDiposniblesPorTipo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VistaHabitacionesDisponiblesPorTipo vista = new VistaHabitacionesDisponiblesPorTipo();
+				vista.setVisible(true);
+			}
+		});
+		
+		
 		JButton verOfertasDisponibles = new JButton("Ver Ofertas Disponibles");
 		cont.add(verOfertasDisponibles);
 		
@@ -71,6 +85,34 @@ public class vistaMenu extends JFrame{
 				VistaReservaClienteEsporadico vista = new VistaReservaClienteEsporadico();
 				vista.setVisible(true);
 				
+			}
+		});
+		
+		JButton verRestanteAPagar = new JButton("Ver restante a pagar");
+		cont.add(verRestanteAPagar);
+		
+		verRestanteAPagar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VistaRestanteAPagar vista = new VistaRestanteAPagar();
+				
+				vista.setVisible(true);
+			}
+		});
+		
+		JButton IngresarAHabitacion = new JButton("Ingresa Huesped a Habitacion");
+		cont.add(IngresarAHabitacion);
+		
+		IngresarAHabitacion.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				VistaIngresarHuespedAHabitacion vista= new VistaIngresarHuespedAHabitacion();
+				
+				vista.setVisible(true);
 			}
 		});
 		

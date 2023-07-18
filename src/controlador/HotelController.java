@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import modelo.Hotel;
+import modelo.Enum.TipoHabitacion;
 import modelo.Exception.NoEsHabitualException;
 import modelo.Exception.NoExisteClienteException;
 import modelo.Exception.NoExisteDescuentoException;
 import modelo.Exception.NoExisteHabitacionException;
+import modelo.Exception.NoExisteReservaException;
 import modelo.ToView.DescuentoToView;
 import modelo.ToView.HabitacionToView;
 
@@ -20,11 +22,33 @@ public class HotelController {
 		return hotel.verHabitacionesDisponibles();
 		
 	}
+	
+	public ArrayList<HabitacionToView> verHabitacionesDisponiblesPorTipo (String tipoHabitacion){
+		
+		TipoHabitacion tipo = obtenerTipoHabitacion(tipoHabitacion); 
+		
+		return hotel.verHabitacionesDisponiblesPorTipo(tipo);
+		
+	}
+
+	private TipoHabitacion obtenerTipoHabitacion(String tipoHabitacion) {
+		
+		TipoHabitacion[] tipos = TipoHabitacion.values();
+		
+		for(TipoHabitacion tipo : tipos) {
+			if (tipo.name().equals(tipoHabitacion)) {
+				return tipo;
+			} 
+		}
+		
+		return null;
+	}
 
 	public ArrayList<DescuentoToView> verDescuentosGenerales() {
 		
 		return hotel.getDescuentos();
 	}
+	
 	
 	public int agendarReservaHabitual(String dniCliente, int nroHabitacion, String descuento, LocalDate fechaComienzo, 
 			int nroDias) throws NoExisteDescuentoException, NoExisteHabitacionException, NoExisteClienteException, NoEsHabitualException {
@@ -46,6 +70,11 @@ public class HotelController {
 	public double verRestentaReserva(String dniCliente, int nroReserva) throws NoExisteClienteException {
 		double restante = hotel.verRestanteAAPagar(dniCliente, nroReserva);
 		return restante;
+	}
+
+	public void cambiarEstadoTomada(String dni, int nroReserva) throws NoExisteClienteException, NoExisteReservaException {
+		
+		hotel.cambiarEstadoATomada(dni, nroReserva);
 	}
 	
 	

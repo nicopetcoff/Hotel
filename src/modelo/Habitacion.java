@@ -70,7 +70,7 @@ public class Habitacion {
 
 	public HabitacionToView toView() {
 
-		return new HabitacionToView(this.tipoHabitacion, this.piso, this.precio, this.esAlquilado);
+		return new HabitacionToView(this.tipoHabitacion, this.nroHabitacion,this.piso, this.precio, this.esAlquilado);
 	}
 	
 	
